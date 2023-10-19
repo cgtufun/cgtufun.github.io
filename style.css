@@ -11,6 +11,7 @@
 
 .container h1 {
   text-align: center;
+  color: aliceblue;
   margin-bottom: 80px;
   padding-top: 20px;
   font-weight: bold;
@@ -57,7 +58,7 @@
 
 .content h2 {
   padding: 0px 1px;
-  color: #FF5722;
+  color: #e7dede;
   font-size:15px;
 }
 
