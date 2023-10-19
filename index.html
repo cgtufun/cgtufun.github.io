@@ -13,15 +13,63 @@
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
 <script>LA.init({id:"K6CNbTW1bYhJy7F9",ck:"K6CNbTW1bYhJy7F9"})</script>
 
+<script>
+    // 定义背景图片数组
+    var bgImages = [
+      "https://img.imdodo.com/dodo/1bd0d20d7d24d3d09ede86c8e2413347.jpg",
+      "https://img.imdodo.com/dodo/564a85ff06a18e82d11d2ab7b20cff2a.jpg",
+      "https://img.imdodo.com/dodo/ccafd440fc274258287fed95ceb15050.jpeg",
+      "https://img.imdodo.com/dodo/77ed2ce475f719a30ddbb2e55f2b4b71.jpg",
+      "https://img.imdodo.com/dodo/5165e85252eaf48e306446bca5ab9230.png",
+      "https://img.imdodo.com/dodo/de0967626364b39754831ab074f1c5da.png"
+    ];
+
+    // 获取随机索引
+    function getRandomIndex(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    // 设置随机背景图
+    function setRandomBackground() {
+      // 获取随机索引
+      var index = getRandomIndex(bgImages.length);
+
+      // 设置背景图
+      var imageUrl = "url('" + bgImages[index] + "')";
+      document.body.style.backgroundImage = imageUrl;
+    }
+
+    // 页面加载时设置随机背景图，并启动轮播定时器
+    window.onload = function() {
+      setRandomBackground();
+      setInterval(setRandomBackground, 9000); // 每 3 秒切换一次背景图
+    };
+  </script>
 
     </head>
 
     <style>
-        body {
-            background-image: url("https://img.imdodo.com/dodo/49831db7f6a12013ce93d3387296aebc.jpg");
-            background-size: cover;
-            font-family:Arial, sans-serif;
-        }
+    body {
+      /* background-repeat: no-repeat; */
+      /* background-position: center; */
+      background-size: cover;
+      animation: fade 9s infinite;
+    }
+
+    /* @keyframes fade {
+      0% {
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    } */
     </style>
 
     <body>
@@ -441,6 +489,9 @@
         </div>
 
 <script src='https://api.vvhan.com/api/snow'></script>
+
+<script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+<script id="xplayer" src="https://music.xfyun.club/Static/player/player.js" key="6236e8c34f1cb" m = "1"></script>
 
     </body>
 </html> 
