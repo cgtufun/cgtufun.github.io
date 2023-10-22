@@ -1,241 +1,507 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <title>茶馆图-今日无事，茶馆看图</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="茶馆图"/>
+        <meta name="description" content="茶馆图导航"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        
 
 <!--统计代码-->
 <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-<script>LA.init({id:"K2367gcrF2Z7b1J2",ck:"K2367gcrF2Z7b1J2"})</script>
+<script>LA.init({id:"K6CNbTW1bYhJy7F9",ck:"K6CNbTW1bYhJy7F9"})</script>
 
-  <title>茶馆图-今日无事，茶馆看图</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+<script>
+    // 定义背景图片数组
+    var bgImages = [
+      "https://img.imdodo.com/dodo/1d49b85a7cfb18fcfb750603ef047b8f.gif",
+
+      "https://img.imdodo.com/dodo/3bfd9fb9012d92eec62c4c815c8dc37d.png",
+      "https://img.imdodo.com/dodo/49831db7f6a12013ce93d3387296aebc.jpg",
+      "https://img.imdodo.com/dodo/2f2803c849827c9d82d5b24974de10c7.jpg",
+      "https://img.imdodo.com/dodo/92c86ca586950e6af648b58eda299e2a.jpg",
+      "https://img.imdodo.com/dodo/1bd0d20d7d24d3d09ede86c8e2413347.jpg",
+      "https://img.imdodo.com/dodo/564a85ff06a18e82d11d2ab7b20cff2a.jpg",
+      "https://img.imdodo.com/dodo/ccafd440fc274258287fed95ceb15050.jpeg",
+      "https://img.imdodo.com/dodo/61e9abe5069beba6f183ffd751918cb9.jpg",
+      "https://img.imdodo.com/dodo/6c527c7fd9dcb375dd8d6b2a4b97e67c.jpg",
+      "https://img.imdodo.com/dodo/36ace1f34f43bfed5edd9f0fb65137e2.jpg",
+      "https://img.imdodo.com/dodo/143dcd11e9a109c6a6f44eebb74e166d.jpg",
+      "https://img.imdodo.com/dodo/051586be56a443adc41fd1f1fb7d5ca9.jpg",
+      "https://img.imdodo.com/dodo/764f41488833d78c0d9089b66aced0fd.png",
+      "https://img.imdodo.com/dodo/de0967626364b39754831ab074f1c5da.png"
+    ];
+    
+    // 获取随机索引
+    function getRandomIndex(max) {
+      return Math.floor(Math.random() * max);
     }
 
+    // 设置随机背景图
+    function setRandomBackground() {
+      // 获取随机索引
+      var index = getRandomIndex(bgImages.length);
+
+      // 设置背景图
+      var imageUrl = "url('" + bgImages[index] + "')";
+      document.body.style.backgroundImage = imageUrl;
+    }
+
+    // 页面加载时设置随机背景图，并启动轮播定时器
+    window.onload = function() {
+      setRandomBackground();
+      setInterval(setRandomBackground, 7000); // 每 7 秒切换一次背景图
+    };
+  </script>
+
+    </head>
+
+    <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #F5ECEC;
+      /* background-repeat: no-repeat; */
+      /* background-position: center; */
+      background-size: cover;
+      animation: fade 7s infinite;
     }
 
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      color: #333333;
-      font-size: 26px;
-    }
-
-    nav {
-      background-color: #F2BAC9; 
-      padding: 10px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    nav ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li {
-      display: inline-block;
-      margin-right: 10px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #2e4e7e;
-      padding: 5px;
-      border-radius: 4px;
-      display: inline-block;
-    }
-
-    nav ul li a:hover {
-      background-color: #d4d4d4;
-      color: #353535;
-      transform: scale(1.1);
-    }
-
-    main {
-      background-color: #ebe2e2;
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-
-    h2 {
-      margin-top: 0;
-      margin-bottom: 20px;
-      font-size: 16px;
-      color: #5c5c5c;
-    }
-
-    p {
-      margin-bottom: 5px;
-    }
-
-    a {
-      text-decoration: none;
-      color: #cc4f34;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: #11bc52;
-    }
-
-    img {
-    max-width: 100%;
-    height: auto;
-  }
-
-    @media screen and (max-width: 350px) {
-      nav ul li {
-        display: block;
-        margin-bottom: 10px;
+    /* @keyframes fade {
+      0% {
+        opacity: 0;
       }
-
-      nav ul li:last-child {
-        margin-bottom: 0;
+      20% {
+        opacity: 1;
       }
-
-      h1 {
-        font-size: 24px;
+      80% {
+        opacity: 1;
       }
-
-      h2 {
-        font-size: 16px;
+      100% {
+        opacity: 0;
       }
-      
+    } */
+    </style>
 
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <h1>茶馆图</h1>
-      <h6>今日无事，茶馆看图</h6>
-    </header>
+    <body>
 
-  <nav>
-      <ul>
-        <li><a href="http://cgtu.fun/">首页</a></li>
-        <li><a href="http://xiaobaoxia.com/app.html">软件库</a></li>
-        <li><a href="http://xiaobaoxia.com/tool/">工具库</a></li>
-        <li><a href="http://xiaobaoxia.com/daohang.html">网站导航</a></li>
-      </ul>
-    </nav>
+        <div class="container">
+            <h1>茶馆图</h1>
+
+            <div class="row">
+
+                <a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzUyMDY5MzUwMw==&action=getalbum&album_id=3127314562254569476#wechat_redirect">
+                    <div class="content">
+                        <h2>#OOTD</h2>
+                    </div>
+                </a>
+
+                <a href="https://huaban.com/favorite/beauty">
+                    <div class="content">
+                        <h2>花瓣美女</h2>
+                    </div>
+                </a>
+
+                <a href="https://m.tuiimg.com/">
+                    <div class="content">
+                        <h2>推图网</h2>
+                    </div>
+                </a>
+
+                <a href="http://ycyweb.cloudapp.net/">
+                    <div class="content">
+                        <h2>三界异次元</h2>
+                    </div>
+                </a>
+
+                <a href="https://www.jdlingyu.com/">
+                    <div class="content">
+                        <h2>绝对领域</h2>
+                    </div>
+                </a>
+
+                <a href="https://worldcosplay.net/">
+                    <div class="content">
+                        <h2>worldcosplay</h2>
+                    </div>
+                </a>
+
+                <a href="https://www.tuiimg.com/meinv/">
+                    <div class="content">
+                        <h2>推图网</h2>
+                    </div>
+                </a>
+
+                <a href="https://hotties.cutiesgeneration.com/zh-hans/">
+                    <div class="content">
+                        <h2>辣妹时代</h2>
+                    </div>
+                </a>
+
+                <a href="https://dimtown.com/">
+                    <div class="content">
+
+                        <h2>次元小镇</h2>
+                    </div>
+                </a>
+
+                <a href="https://www.tomoshe.com/">
+                    <div class="content">
+                       
+                        <h2>图萌社</h2>
+                    </div>
+                </a>
+
+                <a href="https://www.fulitu.cc/">
+                    <div class="content">
+                       
+                        <h2>福利兔</h2>
+                    </div>
+                </a>
+
+                
+                <a href="https://www.lunai.top/">
+                    <div class="content">
+                       
+                        <h2>鹿奈次元</h2>
+                    </div>
+                </a>
+
+                <a href="https://meituzyw.com/">
+                    <div class="content">
+                       
+                        <h2>ACG资源网</h2>
+                    </div>
+                </a>
+
+                <a href="http://www.itokoo.com/">
+                    <div class="content">
+                       
+                        <h2>爱图客</h2>
+                    </div>
+                </a>
+
+                <a href="https://www.aciyuan.com/">
+                    <div class="content">
+                       
+                        <h2>A次元</h2>
+                    </div>
+                </a>
+
+                <a href="http://www.cosplayla.com/">
+                    <div class="content">
+                       
+                        <h2>LA站</h2>
+                    </div>
+                </a>
+     
+                
+                <a href="https://www.yeitu.com/">
+                    <div class="content">
+                       
+                        <h2>亿图全景图库</h2>
+                    </div>
+                </a>
+                
+                <a href="https://www.shenshiwz.com/">
+                    <div class="content">
+                        <h2>绅士文摘</h2>
+                    </div>
+                </a>
+
+                <a href="https://www.diyidan.com/main/area/104003/1">
+                    <div class="content">
+                       
+                        <h2>第一弹</h2>
+                    </div>
+                </a>
+
+                <a href="http://www.cosplay8.com/index.html">
+                    <div class="content">
+                       
+                        <h2>次元岛</h2>
+                    </div>
+                </a>
+                
 
 
-      <!-- 
+                <a href="https://diskgirl.com/">
+                    <div class="content">
+                       
+                        <h2>硬盘少女</h2>
+                    </div>
+                </a>
 
-<img src="https://img.imdodo.com/dodo/1559aa56ebe49bae4e68821c68996c02.png" alt="千站科技">
+                <a href="https://kanmeitu1.cc/">
+                    <div class="content">
+                       
+                        <h2>看妹图</h2>
+                    </div>
+                </a>
 
-    <main>
-      <p><a href="12">内容</a></p>
-    </main>
-    <br>
+                        
 
-    
-    
-      -->
+                <a href="https://www.5280k.com/">
+                    <div class="content">
+                       
+                        <h2>5280</h2>
+                    </div>
+                </a>
 
-      <main>
-        <p><a href="https://pan.xunlei.com/s/VNgGfuPBQhLV5wUk2evqu65ZA1?pwd=wjwh#">XIAOYU语画界</a></p>
-      </main>
-      <br>
+                <a href="https://www.uyn8.cn/">
+                    <div class="content">
+                       
+                        <h2>牛牛美图</h2>
+                    </div>
+                </a>
 
-      <main>
-        <p><a href="https://pan.xunlei.com/s/VNgE_tvhNR-toBsQxRd2tbw0A1?pwd=ne3c#">XiuRen秀人网套图下载</a></p>
-      </main>
-      <br>
+                <a href="https://www.xrmn03.cc/">
+                    <div class="content">
+                       
+                        <h2>秀人美女网</h2>
+                    </div>
+                </a>
 
-      <main>
-        <p><a href="https://pan.xunlei.com/s/VNgENA1oMalHf_UGwAEXqSYOA1?pwd=q6vs#">超纯妹纸白丝合集2500p</a></p>
-      </main>
-      <br>
+                <a href="https://www.sifangmao.net/">
+                    <div class="content">
+                       
+                        <h2>私房猫</h2>
+                    </div>
+                </a>
 
-      <main>
-        <p>
-        赞助9.9元以上，赠送100个美女写真网站
-        <br>
-        </p>
-      </main>
-      <br>
+                <a href="https://www.meijuntu.com/">
+                    <div class="content">
+                       
+                        <h2>俊美图</h2>
+                    </div>
+                </a>
 
-      <main>
-        <p>
-        赞助299元，赠送4T资源，300位coser高清无码写真</p>
-      </main>
-      <br>
+                
+                <a href="https://www.taotucd.com/">
+                    <div class="content">
+                       
+                        <h2>套图CD</h2>
+                    </div>
+                </a>
+
+                <a href="https://www.xiangs.co/">
+                    <div class="content">
+                       
+                        <h2>像素点</h2>
+                    </div>
+                </a>
+
+                <a href="https://www.6evu.com/">
+                    <div class="content">
+                       
+                        <h2>遛无写真</h2>
+                    </div>
+                </a>
+
+                <a href="https://www.juyovo.com/">
+                    <div class="content">
+                       
+                        <h2>橘柚小站</h2>
+                    </div>
+                </a>
+
+                <a href="https://www.yalayi.com/">
+                    <div class="content">
+                       
+                        <h2>雅拉伊</h2>
+                    </div>
+                </a>        
+
+                <a href="http://www.ikmjx.com/">
+                    <div class="content">
+                       
+                        <h2>爱看买家秀</h2>
+                    </div>
+                </a>  
+
+                <a href="https://www.45mt.com/">
+                    <div class="content">
+                       
+                        <h2>45美图</h2>
+                    </div>
+                </a>  
+
+                <a href="https://meitulu.me/">
+                    <div class="content">
+                       
+                        <h2>美图录</h2>
+                    </div>
+                </a>  
+                
+                <a href="https://haozhengjing.com/">
+                    <div class="content">
+                       
+                        <h2>好正经</h2>
+                    </div>
+                </a>     
+
+                <a href="http://www.ov85.com/">
+                    <div class="content">
+                       
+                        <h2>醉猫网</h2>
+                    </div>
+                </a> 
+
+                <a href="https://www.kelagirls.com/index.html">
+                    <div class="content">
+                       
+                        <h2>克拉女神</h2>
+                    </div>
+                </a>  
+                
+                <a href="https://www.zteman.net/xzhj">
+                    <div class="content">
+                        <h2>宅特曼</h2>
+                    </div>
+                </a>   
+
+                <a href="https://www.rosepic.vip/">
+                    <div class="content">
+                        <h2>魅丝社</h2>
+                    </div>
+                </a>   
+
+                <a href="https://www.mm683.com/">
+                    <div class="content">
+                        <h2>美么网</h2>
+                    </div>
+                </a> 
+           
+                <a href="https://www.rewuku01.com/">
+                    <div class="content">
+                        <h2>热舞库</h2>
+                    </div>
+                </a> 
+           
+
+                <a href="http://www.tdz3.com/">
+                    <div class="content">
+                        <h2>图毒志</h2>
+                    </div>
+                </a> 
 
 
-      <main>
-        <img src="https://img.imdodo.com/dodo/6d7ede5d2ffa729c49104d7c67011efd.png" alt="茶馆图">
-      </main>
-      <br>
-      
-      <main>
-        <img src="https://img.imdodo.com/dodo/6a4b367557c8603ae8043f4fd3240b23.png" alt="茶馆图">
-      </main>
-      <br>
+                <a href="https://www.nvshenzl.com/">
+                    <div class="content">
+                        <h2>女神资料网</h2>
+                    </div>
+                </a> 
+                
 
-      <main>
-        <img src="https://img.imdodo.com/dodo/6c527c7fd9dcb375dd8d6b2a4b97e67c.jpg" alt="茶馆图">
-      </main>
-      <br>
+                <a href="https://xingseren.club">
+                    <div class="content">
+                        <h2>形色人</h2>
+                    </div>
+                </a> 
+                
+                <a href="https://www.cos777.com/">
+                    <div class="content">
+                        <h2>7萌堂</h2>
+                    </div>
+                </a> 
 
-      <main>
-        <img src="https://img.imdodo.com/dodo/36ace1f34f43bfed5edd9f0fb65137e2.jpg" alt="茶馆图">
-      </main>
-      <br>
+                <a href="https://desk.tooopen.com/">
+                    <div class="content">
+                        <h2>美图公社</h2>
+                    </div>
+                </a> 
 
-      <main>
-        <img src="https://img.imdodo.com/dodo/2ca2398d4b577c42a0bc5d9786f6ccdb.webp" alt="茶馆图">
-      </main>
-      <br>
+                <a href="https://taotuhome.com/">
+                    <div class="content">
+                        <h2>套图之家</h2>
+                    </div>
+                </a> 
+                
 
-
-      <main>
-        <img src="https://img.imdodo.com/dodo/1784740ac4b0b28947f97f0c30fc4960.webp" alt="茶馆图">
-      </main>
-      <br>
-
-      <main>
-        <img src="https://img.imdodo.com/dodo/3ab3afd8d48c99ac3448ff729ff1b03b.webp" alt="茶馆图">
-      </main>
-      <br>
-
-      <main>
-        <img src="https://img.imdodo.com/dodo/29cd66f41ef4a63096b17065b6e2b698.webp" alt="茶馆图">
-      </main>
-      <br>
-
-      <main>
-        <img src="https://img.imdodo.com/dodo/ff2c7342ce126d0593503a37f2e011e4.webp" alt="茶馆图">
-      </main>
-      <br>
-
-      <main>
-        <img src="https://img.imdodo.com/dodo/04cb6323a0141658b2b2104ccea08461.webp" alt="茶馆图">
-      </main>
-      <br>
+                <a href="https://www.poco.cn/">
+                    <div class="content">
+                        <h2>颇可网</h2>
+                    </div>
+                </a> 
 
 
-  </div>
-</body>
-</html>
+                <a href="https://ww.xitek.com/">
+                    <div class="content">
+                        <h2>色影无忌</h2>
+                    </div>
+                </a> 
+
+                <a href="https://www.asmrqy.com/">
+                    <div class="content">
+                        <h2>ASMR轻语</h2>
+                    </div>
+                </a> 
+
+                <a href="https://www.benziyun.com/mzb">
+                    <div class="content">
+                        <h2>妹子白</h2>
+                    </div>
+                </a> 
+
+                <a href="https://www.pandadiu.com/">
+                    <div class="content">
+                        <h2>Cosplay联盟</h2>
+                    </div>
+                </a> 
+
+                <a href="http://www.mingchetuji.com/">
+                    <div class="content">
+                        <h2>茗澈图语</h2>
+                    </div>
+                </a> 
+
+                <a href="https://www.mnjiang.com/">
+                    <div class="content">
+                        <h2>咪乃酱</h2>
+                    </div>
+                </a> 
+
+                <a href="https://www.xiarenzhuxin.com/">
+                    <div class="content">
+                        <h2>虾仁猪心</h2>
+                    </div>
+                </a> 
+       
+                <a href="https://chunmumu.com/">
+                    <div class="content">
+                        <h2>蠢沫社</h2>
+                    </div>
+                </a> 
+       
+                <a href="https://sl.zqmiao.com/">
+                    <div class="content">
+                        <h2>神乐蜗</h2>
+                    </div>
+                </a> 
+       
+                <a href="https://www.laotuding.com/">
+                    <div class="content">
+                        <h2>老图丁</h2>
+                    </div>
+                </a> 
+
+                <a href="https://bololi.com/">
+                    <div class="content">
+                        <h2>菠萝社</h2>
+                    </div>
+                </a> 
+
+                
+                
+                
+
+
+            </div>
+        </div>
+
+<script src='https://api.vvhan.com/api/snow'></script>
+
+<script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+<script id="xplayer" src="https://music.xfyun.club/Static/player/player.js" key="6236e8c34f1cb" m = "1"></script>
+
+    </body>
+</html> 
